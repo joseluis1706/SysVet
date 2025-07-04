@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @RestController
-@RequestMapping("api/productos")
+@RequestMapping("/Productos")
 @Tag(name = "Productos", description = "Permite gestionar los productos de la veterinaria")
 
 public class ProductoController {
-    @RequestMapping(path = "/listar", method=RequestMethod.GET)
+    @RequestMapping(path = "/Listar", method=RequestMethod.GET)
     @Operation(summary = "Listar productos", description = "Permite listar los productos disponibles en la veterinaria")
     public ResponseDTO listar(){
         return new ResponseDTO("success", "", null);

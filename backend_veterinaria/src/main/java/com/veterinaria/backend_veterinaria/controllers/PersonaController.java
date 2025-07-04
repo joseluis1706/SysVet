@@ -15,21 +15,21 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 
 @RestController
-@RequestMapping("/personas")
-@Tag(name = "Personas", description = "Permite gestionar una persona")
+@RequestMapping("/Personas")
+@Tag(name = "Personas", description = "Permite gestionar Cliente")
 
 public class PersonaController {
 
     private ArrayList<Persona> listPersona = new ArrayList<>();
 
-    @RequestMapping(path = "/crear", method=RequestMethod.POST)
+    @RequestMapping(path = "/Crear", method=RequestMethod.POST)
     @Operation(summary = "Crear una nueva persona", description = "Permite registrar una nueva persona en el sistema")
     public Persona crear(@RequestBody Persona persona) {
         listPersona.add(persona); 
         return persona; 
     }
 
-    @RequestMapping(path = "/listar", method = RequestMethod.GET)
+    @RequestMapping(path = "/Listar", method = RequestMethod.GET)
     @Operation(summary = "Listado de personas", description = "Permite listar los clientes en el sistema")
     public ArrayList<Persona> listar(){
         return listPersona;
