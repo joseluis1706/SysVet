@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Producto {
+  
     @Id
     public int idProducto;
     public String nombreProducto;
@@ -16,4 +17,5 @@ public class Producto {
     public Date fechaVencimientoProducto;
     public float valorProducto;
     public int stockProducto;
-}
+    
+  }
