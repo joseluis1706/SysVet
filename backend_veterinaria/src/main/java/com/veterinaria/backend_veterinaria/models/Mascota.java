@@ -1,5 +1,7 @@
 package com.veterinaria.backend_veterinaria.models;
 
+import java.sql.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -13,7 +15,7 @@ public class Mascota {
     public String especieMascota;
     public String razaMascota;
     public String colorMascota;
-    public String fechaNacimiento;
+    public Date fechaNacimiento;
     public String sexoMascota;
     public float pesoMascota;
     public String estadoMascota;
