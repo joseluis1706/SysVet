@@ -36,7 +36,7 @@ public class ProductoController {
     @RequestMapping(path = "/Guardar", method=RequestMethod.POST)
     @Operation(summary = "Guardar producto", description = "Permite guardar un nuevo producto en la veterinaria")
     public ResponseDTO guardar(@RequestBody Producto producto) {
-        return new ResponseDTO("success", "", service.guardaProducto(producto));
+        return new ResponseDTO("success", "", service.guardarProducto(producto));
     }
 
     // Eliminar un producto por su ID

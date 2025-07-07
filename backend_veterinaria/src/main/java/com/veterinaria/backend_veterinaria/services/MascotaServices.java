@@ -17,7 +17,7 @@ public class MascotaServices {
     private MascotaRepository mascotaRepository;
     
     // Guarda una nueva mascota en la base de datos. 
-    public Mascota guardaMascota(Mascota mascota) {
+    public Mascota guardarMascota(Mascota mascota) {
         return mascotaRepository.save(mascota);
     }
 

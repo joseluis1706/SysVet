@@ -16,7 +16,7 @@ public class ProductoServices {
     private ProductoRepository productoRepository;
     
     // Guarda un producto en la base de datos.  
-    public Producto guardaProducto(Producto producto) {
+    public Producto guardarProducto(Producto producto) {
         return productoRepository.save(producto);
     }
 

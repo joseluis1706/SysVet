@@ -34,7 +34,7 @@ public class MascotaController {
     @RequestMapping(path = "/Guardar", method=RequestMethod.POST)
     @Operation(summary = "Guardar datos de Mascota", description = "Permite guardar una nueva mascota")
     public ResponseDTO guardar(@RequestBody Mascota mascota) {
-        return new ResponseDTO("success", "", service.guardaMascota(mascota));
+        return new ResponseDTO("success", "", service.guardarMascota(mascota));
     }
 
     // Eliminar una mascota por su ID
