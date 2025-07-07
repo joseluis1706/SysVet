@@ -16,6 +16,5 @@ public class Producto {
     public String tipoProducto;
     public Date fechaVencimientoProducto;
     public float valorProducto;
-    public int stockProducto;
-    
+    public int stockProducto;    
   }

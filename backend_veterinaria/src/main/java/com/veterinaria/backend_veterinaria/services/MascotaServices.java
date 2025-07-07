@@ -29,7 +29,7 @@ public class MascotaServices {
     // Elimina una mascota por su ID.
     public boolean eliminarMascota(String id) {
         if(!mascotaRepository.existsById(id)) {
-            return false; // Macota no encontrada
+            return false; // Mascota no encontrada
         }
          // Elimina la mascota
         mascotaRepository.deleteById(id);

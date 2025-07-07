@@ -13,5 +13,5 @@ public class Proveedor {
     public String telefonoProveedor;
     public String emailProveedor;
     public String rucProveedor;
-    public String estadoProveedor; // Activo, Inactivo Preguntar a la tutora si es necesario
+    public Boolean estadoProveedor; // Activo, Inactivo Preguntar a la tutora si es necesario
 }

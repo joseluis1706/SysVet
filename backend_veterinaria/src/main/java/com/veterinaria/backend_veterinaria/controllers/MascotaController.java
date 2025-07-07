@@ -32,7 +32,7 @@ public class MascotaController {
 
     // Guardar una nueva mascota
     @RequestMapping(path = "/Guardar", method=RequestMethod.POST)
-    @Operation(summary = "Guardar datos de Mascota ", description = "Permite guardar una nueva mascota")
+    @Operation(summary = "Guardar datos de Mascota", description = "Permite guardar una nueva mascota")
     public ResponseDTO guardar(@RequestBody Mascota mascota) {
         return new ResponseDTO("success", "", service.guardaMascota(mascota));
     }
