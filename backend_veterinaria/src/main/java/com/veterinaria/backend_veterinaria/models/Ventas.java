@@ -1,17 +1,21 @@
 package com.veterinaria.backend_veterinaria.models;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 
 @Entity
-public class Ventas {
+public class Ventas implements Serializable {
     @Id
-    public int idVenta;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idVenta;
     public Date fechaVenta;
     public float totalVenta;
     public String formaPago; // Efectivo, Tarjeta, Transferencia

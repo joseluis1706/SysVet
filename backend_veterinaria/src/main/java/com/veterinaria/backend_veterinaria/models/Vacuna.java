@@ -1,12 +1,17 @@
 package com.veterinaria.backend_veterinaria.models;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Vacuna {
+public class Vacuna implements Serializable {
     @Id
-    public int idVacuna;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idVacuna;
     public String nombreVacuna;
     public String descripcionVacuna;
     public String especieAnimal;

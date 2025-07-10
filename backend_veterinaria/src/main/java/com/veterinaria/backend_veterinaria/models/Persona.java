@@ -2,11 +2,14 @@ package com.veterinaria.backend_veterinaria.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.*;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Persona {
     @Id
-    public String idPersona;
+    public int idPersona;
     public String nombre;
     public String apellido;
     public String telefono;

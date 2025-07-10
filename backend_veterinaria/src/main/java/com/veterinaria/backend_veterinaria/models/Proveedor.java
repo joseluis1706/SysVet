@@ -1,12 +1,17 @@
 package com.veterinaria.backend_veterinaria.models;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Proveedor {
+public class Proveedor implements Serializable {
     @Id
-    public int idProveedor;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idProveedor;
     public String razonSocialProveedor;    
     public String nitProveedor;
     public String contactoProveedor;
