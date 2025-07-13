@@ -27,7 +27,7 @@ public class MascotaServices {
     }
 
     // Elimina una mascota por su ID.
-    public boolean eliminarMascota(String id) {
+    public boolean eliminarMascota(Long id) {
         if(!mascotaRepository.existsById(id)) {
             return false; // Mascota no encontrada
         }
@@ -37,12 +37,12 @@ public class MascotaServices {
     }
 
     // Consulta una mascota por su ID.
-    public Optional<Mascota>consultarMascotaPorId(String id) {
+    public Optional<Mascota>consultarMascotaPorId(Long id) {
         return mascotaRepository.findById(id);
     }
 
     // Actualiza una mascota por su ID.
-    public Mascota actualizarMascota(String id, Mascota mascota) {
+    public Mascota actualizarMascota(Long id, Mascota mascota) {
         Optional<Mascota> value = mascotaRepository.findById(id);
         value.get().nombreMascota = mascota.nombreMascota;
         value.get().especieMascota = mascota.especieMascota;

@@ -1,16 +1,20 @@
 package com.veterinaria.backend_veterinaria.models;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Hospitalizacion {
+public class Hospitalizacion implements Serializable {
     @Id
-    public int idHospitalizacion;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idHospitalizacion;
     public Date fechaIngreso;
     public Date fechaSalida;
     public String observaciones;

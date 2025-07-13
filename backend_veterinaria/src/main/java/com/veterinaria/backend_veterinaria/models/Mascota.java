@@ -1,16 +1,20 @@
 package com.veterinaria.backend_veterinaria.models;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Mascota {
+public class Mascota implements Serializable {
     @Id
-    public String idMascota;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idMascota;
     public String nombreMascota;
     public String especieMascota;
     public String razaMascota;

@@ -40,7 +40,7 @@ public class MascotaController {
     // Eliminar una mascota por su ID
     @RequestMapping(path = "/Eliminar/{id}", method=RequestMethod.DELETE)
     @Operation(summary = "Eliminar Mascota", description = "Permite eliminar una mascota por su ID")
-    public ResponseDTO eliminar(@PathVariable String id) {
+    public ResponseDTO eliminar(@PathVariable Long id) {
         if(service.eliminarMascota(id)){
             return new ResponseDTO("success", "Mascota eliminada correctamente", "");
         } 
@@ -50,7 +50,7 @@ public class MascotaController {
     // Consultar una mascota por su ID
     @RequestMapping(path = "/Consultar/{id}", method=RequestMethod.GET)
     @Operation(summary = "Consultar mascota por ID", description = "Permite consultar una mascota por su ID")
-    public ResponseDTO consultar(@PathVariable String id) {
+    public ResponseDTO consultar(@PathVariable Long id) {
         if(service.consultarMascotaPorId(id).isEmpty()) {
             return new ResponseDTO("error", "Mascota no encontrada", "");
         }
@@ -60,7 +60,7 @@ public class MascotaController {
     // Actualizar una mascota por su ID
     @RequestMapping(path = "/Actualizar/{id}", method=RequestMethod.PUT)
     @Operation(summary = "Actualizar mascota", description = "Permite actualizar una mascota por su ID")
-    public ResponseDTO actualizar(@PathVariable String id, @RequestBody Mascota mascota) {
+    public ResponseDTO actualizar(@PathVariable Long id, @RequestBody Mascota mascota) {
         return new ResponseDTO("success", "", service.actualizarMascota(id, mascota));
     }
 }
