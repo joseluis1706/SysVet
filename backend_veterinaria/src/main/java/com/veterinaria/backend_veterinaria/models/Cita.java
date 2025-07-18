@@ -24,8 +24,8 @@ public class Cita implements Serializable {
     public String estadoCita; // estado de la cita (pendiente, confirmada, cancelada, etc.)
 
     @ManyToOne
-    @JoinColumn(name = "idCliente")
-    public Cliente idCliente; // ID del cliente asociado a la cita preguntar a la tutora si es correcto
+    @JoinColumn(name = "idPersona")
+    public Cliente idPersona; // ID del cliente asociado a la cita preguntar a la tutora si es correcto
 
     @ManyToOne
     @JoinColumn(name = "idMascota")

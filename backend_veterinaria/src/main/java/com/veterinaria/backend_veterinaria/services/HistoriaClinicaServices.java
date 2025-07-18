@@ -6,8 +6,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.veterinaria.backend_veterinaria.DTOs.HistoriaClinicaDTO;
 import com.veterinaria.backend_veterinaria.models.HistoriaClinica;
+import com.veterinaria.backend_veterinaria.models.Mascota;
+import com.veterinaria.backend_veterinaria.models.UsuarioEmpleado;
 import com.veterinaria.backend_veterinaria.repository.HistoriaClinicaRepository;
+import com.veterinaria.backend_veterinaria.repository.MascotaRepository;
+import com.veterinaria.backend_veterinaria.repository.UsuarioEmpleadoRepository;
+
 
 @Service
 public class HistoriaClinicaServices {
@@ -15,10 +21,36 @@ public class HistoriaClinicaServices {
     @Autowired
     private HistoriaClinicaRepository historiaClinicaRepository;
 
-    // Guarda una nueva historia clínica en la base de datos.
-    public HistoriaClinica guardarHistoriaClinica(HistoriaClinica historiaClinica) {
-        return historiaClinicaRepository.save(historiaClinica);
+    @Autowired
+    private MascotaRepository mascotaRepository;
+
+    @Autowired
+    private UsuarioEmpleadoRepository usuarioEmpleadoRepository;
+
+    public HistoriaClinica guardarDesdeDTO(HistoriaClinicaDTO dto) {
+        Mascota mascota = mascotaRepository.findById(dto.idMascota)
+            .orElseThrow(() -> new RuntimeException("Mascota no encontrada con ID: " + dto.idMascota));
+
+        UsuarioEmpleado persona = usuarioEmpleadoRepository.findById(dto.idPersona)
+            .orElseThrow(() -> new RuntimeException("Persona no encontrada con ID: " + dto.idPersona));
+
+        HistoriaClinica historia = new HistoriaClinica();
+        historia.setFechaCreacion(dto.fechaCreacion);
+        historia.setSintomas(dto.sintomas);
+        historia.setDiagnostico(dto.diagnostico);
+        historia.setTratamiento(dto.tratamiento);
+        historia.setFechaUltimaActualizacion(dto.fechaUltimaActualizacion);
+        historia.setObservaciones(dto.observaciones);
+        historia.setIdMascota(mascota);
+        historia.setIdPersona(persona);
+
+        return historiaClinicaRepository.save(historia);
     }
+
+    // Guarda una nueva historia clínica en la base de datos.
+    /* public HistoriaClinica guardarHistoriaClinica(HistoriaClinica historiaClinica) {
+        return historiaClinicaRepository.save(historiaClinica);
+    } */
 
     // Lista todas las historias clínicas.
     public List<HistoriaClinica> listarHistoriasClinicas() {
@@ -53,7 +85,7 @@ public class HistoriaClinicaServices {
             value.get().diagnostico = historiaClinica.diagnostico;
             value.get().tratamiento = historiaClinica.tratamiento;
             value.get().fechaUltimaActualizacion = historiaClinica.fechaUltimaActualizacion;
-            value.get().observaciones = historiaClinica.observaciones;           
+            value.get().observaciones = historiaClinica.observaciones;
             
             historiaClinicaRepository.save(value.get());
             return value.get();      

@@ -27,22 +27,22 @@ public class MascotaServices {
     }
 
     // Elimina una mascota por su ID.
-    public boolean eliminarMascota(Long id) {
-        if(!mascotaRepository.existsById(id)) {
+    public boolean eliminarMascota(int mascota) {
+        if(!mascotaRepository.existsById(mascota)) {
             return false; // Mascota no encontrada
         }
          // Elimina la mascota
-        mascotaRepository.deleteById(id);
+        mascotaRepository.deleteById(mascota);
         return true;
     }
 
     // Consulta una mascota por su ID.
-    public Optional<Mascota>consultarMascotaPorId(Long id) {
-        return mascotaRepository.findById(id);
+    public Optional<Mascota>consultarMascotaPorId(int mascota) {
+        return mascotaRepository.findById(mascota);
     }
 
     // Actualiza una mascota por su ID.
-    public Mascota actualizarMascota(Long id, Mascota mascota) {
+    public Mascota actualizarMascota(int id, Mascota mascota) {
         Optional<Mascota> value = mascotaRepository.findById(id);
         value.get().nombreMascota = mascota.nombreMascota;
         value.get().especieMascota = mascota.especieMascota;

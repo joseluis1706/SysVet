@@ -2,11 +2,13 @@ package com.veterinaria.backend_veterinaria.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.veterinaria.backend_veterinaria.DTOs.HistoriaClinicaDTO;
 import com.veterinaria.backend_veterinaria.DTOs.ResponseDTO;
 import com.veterinaria.backend_veterinaria.models.HistoriaClinica;
 import com.veterinaria.backend_veterinaria.services.HistoriaClinicaServices;
@@ -31,12 +33,17 @@ public class HistoriaClinicaController {
     }
 
     // Guardar una nueva historia clinica
-    @RequestMapping(path = "/Guardar", method = RequestMethod.POST)
-    @Operation(summary = "Guardar Historia Clinica", description = "Permite guardar una nueva historia clinica")
-    public ResponseDTO guardar(@RequestBody HistoriaClinica historiaClinica) {
-        return new ResponseDTO("success", "", service.guardarHistoriaClinica(historiaClinica));
+    @PostMapping("/Guardar")
+    @Operation(summary = "Guardar Historia Clínica", description = "Permite guardar una nueva historia clínica")
+    public ResponseDTO guardar(@RequestBody HistoriaClinicaDTO dto) {
+        try {
+            HistoriaClinica historia = service.guardarDesdeDTO(dto);
+            return new ResponseDTO("success", "Historia clínica guardada correctamente", historia);
+        } catch (RuntimeException e) {
+            return new ResponseDTO("error", e.getMessage(), null);
+        }
     }
-
+    
     // Eliminar una historia clinica por su ID
     @RequestMapping(path = "/Eliminar/{id}", method = RequestMethod.DELETE)
     @Operation(summary = "Eliminar Historia Clinica", description = "Permite eliminar una historia clinica por su ID")

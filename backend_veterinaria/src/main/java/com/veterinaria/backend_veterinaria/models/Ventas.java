@@ -21,8 +21,8 @@ public class Ventas implements Serializable {
     public String formaPago; // Efectivo, Tarjeta, Transferencia
 
     @ManyToOne
-    @JoinColumn(name = "idCliente")
-    public Cliente idCliente; // Referencia al cliente que realiza la compra preguntar a la tutora si es correcto
+    @JoinColumn(name = "idPersona")
+    public Cliente idPersona; // Referencia al cliente que realiza la compra preguntar a la tutora si es correcto
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")

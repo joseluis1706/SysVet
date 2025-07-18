@@ -50,7 +50,7 @@ public class CitaServices {
         value.get().tipoCita = cita.tipoCita;
         value.get().costoCita = cita.costoCita;
         value.get().estadoCita = cita.estadoCita;
-        value.get().idCliente = cita.idCliente; // Actualiza el cliente asociado
+        value.get().idPersona = cita.idPersona; // Actualiza el cliente asociado
         value.get().idMascota = cita.idMascota; // Actualiza la mascota asociada
 
         citaRepository.save(value.get());

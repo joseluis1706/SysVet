@@ -14,7 +14,7 @@ import jakarta.persistence.ManyToOne;
 public class Mascota implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idMascota;
+    private int idMascota;
     public String nombreMascota;
     public String especieMascota;
     public String razaMascota;
@@ -26,6 +26,7 @@ public class Mascota implements Serializable {
     public String fotoMascota; // URL o ruta de la foto de la mascota
 
     @ManyToOne
-    @JoinColumn(name = "idCliente")
-    public Cliente idCliente; // Relación con Cliente
+    @JoinColumn(name = "idPersona")
+    public Cliente idPersona; // Relación con Cliente
+
 }
