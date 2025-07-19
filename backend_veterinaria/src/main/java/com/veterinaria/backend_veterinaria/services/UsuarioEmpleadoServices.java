@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.veterinaria.backend_veterinaria.models.UsuarioEmpleado;
 import com.veterinaria.backend_veterinaria.repository.UsuarioEmpleadoRepository;
+import com.veterinaria.backend_veterinaria.security.PasswordUtili;
 
 @Service
 public class UsuarioEmpleadoServices {
@@ -16,6 +17,9 @@ public class UsuarioEmpleadoServices {
     private UsuarioEmpleadoRepository usuarioEmpleadoRepository;
 
     public UsuarioEmpleado guardarUsuarioEmpleado(UsuarioEmpleado usuario) {
+        if (usuario.contraseña != null && !usuario.contraseña.isEmpty()) {
+            usuario.contraseña = PasswordUtili.hashPassword(usuario.contraseña);
+        }
         return usuarioEmpleadoRepository.save(usuario);
     }
 
@@ -43,6 +47,12 @@ public class UsuarioEmpleadoServices {
         value.get().telefono = usuarioEmpleado.telefono;
         value.get().email = usuarioEmpleado.email;
         value.get().direccion = usuarioEmpleado.direccion;
+        
+        if (usuarioEmpleado.contraseña != null && !usuarioEmpleado.contraseña.isEmpty()) {
+            value.get().contraseña = PasswordUtili.hashPassword(usuarioEmpleado.contraseña);
+        } else {
+            value.get().contraseña = value.get().contraseña; // Mantiene la contraseña anterior si no se proporciona una nueva
+        }
                 
         usuarioEmpleadoRepository.save(value.get());
         return (value.get());

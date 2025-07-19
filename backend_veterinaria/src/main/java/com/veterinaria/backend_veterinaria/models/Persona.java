@@ -3,6 +3,9 @@ package com.veterinaria.backend_veterinaria.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -15,5 +18,7 @@ public class Persona {
     public String telefono;
     public String email;
     public String direccion;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     public String contraseña;
 }

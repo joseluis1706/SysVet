@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.veterinaria.backend_veterinaria.models.Cliente;
 import com.veterinaria.backend_veterinaria.repository.ClienteRepository;
+import com.veterinaria.backend_veterinaria.security.PasswordUtili;
 
 @Service
 public class ClienteServices {
@@ -16,6 +17,9 @@ public class ClienteServices {
     private ClienteRepository clienteRepository;
 
     public Cliente guardarCliente(Cliente cliente) {
+        if (cliente.contraseña != null && !cliente.contraseña.isEmpty()) {
+            cliente.contraseña = PasswordUtili.hashPassword(cliente.contraseña);
+        }
         return clienteRepository.save(cliente);
     }
 
@@ -43,7 +47,13 @@ public class ClienteServices {
         value.get().telefono = cliente.telefono;
         value.get().email = cliente.email;
         value.get().direccion = cliente.direccion;
-                
+
+        if (cliente.contraseña != null && !cliente.contraseña.isEmpty()) {
+            value.get().contraseña = PasswordUtili.hashPassword(cliente.contraseña);
+        } else {
+            value.get().contraseña = value.get().contraseña; // Mantiene la contraseña anterior si no se proporciona una
+                                                             // nueva
+        }        
         clienteRepository.save(value.get());
         return (value.get());
     }    
