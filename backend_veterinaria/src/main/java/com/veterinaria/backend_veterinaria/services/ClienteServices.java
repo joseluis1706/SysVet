@@ -47,6 +47,7 @@ public class ClienteServices {
         value.get().telefono = cliente.telefono;
         value.get().email = cliente.email;
         value.get().direccion = cliente.direccion;
+        value.get().userName = cliente.userName;
 
         if (cliente.contraseña != null && !cliente.contraseña.isEmpty()) {
             value.get().contraseña = PasswordUtili.hashPassword(cliente.contraseña);

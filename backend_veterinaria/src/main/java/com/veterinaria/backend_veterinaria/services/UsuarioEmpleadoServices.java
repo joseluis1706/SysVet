@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.veterinaria.backend_veterinaria.models.Persona;
 import com.veterinaria.backend_veterinaria.models.UsuarioEmpleado;
 import com.veterinaria.backend_veterinaria.repository.UsuarioEmpleadoRepository;
 import com.veterinaria.backend_veterinaria.security.PasswordUtili;
@@ -47,6 +48,7 @@ public class UsuarioEmpleadoServices {
         value.get().telefono = usuarioEmpleado.telefono;
         value.get().email = usuarioEmpleado.email;
         value.get().direccion = usuarioEmpleado.direccion;
+        value.get().userName = usuarioEmpleado.userName;
         
         if (usuarioEmpleado.contraseña != null && !usuarioEmpleado.contraseña.isEmpty()) {
             value.get().contraseña = PasswordUtili.hashPassword(usuarioEmpleado.contraseña);
@@ -56,7 +58,12 @@ public class UsuarioEmpleadoServices {
                 
         usuarioEmpleadoRepository.save(value.get());
         return (value.get());
-    }    
+    }  
+    
+    // Consulta UsuarioEmpleado por nombre.
+    public Optional<Persona> findByUserName(String nombre){
+        return usuarioEmpleadoRepository.findByUserName(nombre);
+    }
 
     // Consulta UsuarioEmpleado por nombre.
    /*  public List<Persona> consultarUsuarioEmpleadoPorNombre(String nombre) {

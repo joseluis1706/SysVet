@@ -18,6 +18,7 @@ public class Persona {
     public String telefono;
     public String email;
     public String direccion;
+    public String userName;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     public String contraseña;
